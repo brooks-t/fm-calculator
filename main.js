@@ -10,6 +10,54 @@ const number = document.querySelectorAll(".number");
 
 let screenValue = "";
 
-buttons.forEach(function (button) {
-	button.addEventListener("click", handleClick);
-});
+function buttonClick(value) {
+	if (isNaN(parseInt(value))) {
+		handleSymbol(value);
+	} else {
+		handleNumber(value);
+	}
+	rerender();
+}
+
+function handleNumber(number) {
+	if (screenValue === "0") {
+		screenValue = number;
+	} else {
+		screenValue += number;
+	}
+	console.log(screenValue);
+}
+
+function handleSymbol(symbol) {
+	switch (symbol) {
+		case "C":
+			screenValue = "0";
+			break;
+		case "=":
+			console.log("equals");
+			break;
+		case "⬅":
+			console.log("backspace");
+			break;
+		case "+":
+		case "-":
+		case "*":
+		case "/":
+			console.log("operator");
+			break;
+	}
+}
+
+function init() {
+	buttons.forEach((button) => {
+		button.addEventListener("click", (e) => {
+			buttonClick(e.target.innerText);
+		});
+	});
+}
+
+function rerender() {
+	screen.innerText = screenValue;
+}
+
+init();
