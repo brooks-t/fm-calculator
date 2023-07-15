@@ -9,6 +9,8 @@ const operator = document.querySelectorAll(".operator");
 const number = document.querySelectorAll(".number");
 
 let screenValue = "";
+let runningTotal = 0;
+let previousOperator = null;
 
 function buttonClick(value) {
 	if (isNaN(parseInt(value))) {
@@ -28,22 +30,63 @@ function handleNumber(number) {
 	console.log(screenValue);
 }
 
+function handleMath(value) {
+	if (screenValue === "0") {
+		// do nothing
+		return;
+	}
+
+	const intBuffer = parseInt(screenValue);
+	if (runningTotal === 0) {
+		runningTotal = intBuffer;
+	} else {
+		flushOperation(intBuffer);
+	}
+
+	previousOperator = value;
+	screenValue = "0";
+	console.log(runningTotal);
+}
+
+function flushOperation(intBuffer) {
+	if (previousOperator === "+") {
+		runningTotal += intBuffer;
+	} else if (previousOperator === "-") {
+		runningTotal -= intBuffer;
+	} else if (previousOperator === "*") {
+		runningTotal *= intBuffer;
+	} else if (previousOperator === "/") {
+		runningTotal /= intBuffer;
+	}
+}
+
 function handleSymbol(symbol) {
 	switch (symbol) {
 		case "C":
 			screenValue = "0";
 			break;
 		case "=":
-			console.log("equals");
+			if (previousOperator === null) {
+				// need two numbers to do math
+				return;
+			}
+			flushOperation(parseInt(screenValue));
+			previousOperator = null;
+			screenValue = "" + runningTotal;
+			runningTotal = 0;
 			break;
 		case "⬅":
-			console.log("backspace");
+			if (screenValue.length === 1) {
+				screenValue = "0";
+			} else {
+				screenValue = screenValue.slice(0, -1);
+			}
 			break;
 		case "+":
 		case "-":
 		case "*":
 		case "/":
-			console.log("operator");
+			handleMath(symbol);
 			break;
 	}
 }
