@@ -1,7 +1,198 @@
+:root {
+    --primary-color: lightgray;
+    --secondary-color: darkorange;
+    --tertiary-color: black;
+}
+
 * {
     box-sizing: border-box;
 }
 
 h1 {
-    color: maroon;
+    color: black;
+}
+
+.screen {
+    grid-area: screen;
+    background-color: var(--tertiary-color);
+    color: #fff;
+    font-size: 2em;
+    text-align: right;
+    padding: 0.5em;
+    height: 3em;
+}
+
+.clear {
+    grid-area: clear;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.delete {
+    grid-area: delete;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.divide {
+    grid-area: divide;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.seven {
+    grid-area: seven;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.eight {
+    grid-area: eight;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.nine {
+    grid-area: nine;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.multiply {
+    grid-area: multiply;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.four {
+    grid-area: four;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.five {
+    grid-area: five;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.six {
+    grid-area: six;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.subtract {
+    grid-area: subtract;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.one {
+    grid-area: one;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.two {
+    grid-area: two;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.three {
+    grid-area: three;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.add {
+    grid-area: add;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.zero {
+    grid-area: zero;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.equals {
+    grid-area: equals;
+    background-color: var(--secondary-color);
+    color: var(--tertiary-color);
+    font-size: 1.5em;
+    text-align: center;
+    padding: 0.5em;
+}
+
+.clear:hover,
+.delete:hover,
+.operator:hover,
+.number:hover {
+    cursor: pointer;
+    background-color: lightcyan;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.calc-container {
+    display: grid;
+    width: 75%;
+    max-width: 400px;
+    grid-template-areas:
+        "screen screen screen screen"
+        "clear clear delete divide"
+        "seven eight nine multiply"
+        "four five six subtract"
+        "one two three add"
+        "zero zero zero equals";
 }
